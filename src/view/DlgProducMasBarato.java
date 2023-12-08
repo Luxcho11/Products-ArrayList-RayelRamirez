@@ -4,19 +4,44 @@
  */
 package view;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import pojo.Product;
+
 /**
  *
  * @author Huawei
  */
 public class DlgProducMasBarato extends javax.swing.JDialog {
 
-    /**
-     * Creates new form DlgProducMásBarato
-     */
+    ArrayList<Product> dataProduct;
+    Product product = new Product();
+
+    DefaultTableModel model;
+}
+/**
+ * Creates new form DlgProducMásBarato
+ */
     public DlgProducMasBarato(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
+    
+
+    private void showTable() {
+        String titulos[] = {"Id", "Descripción", "Categoría",
+            "Precio", "Stock", "Mínimo", "Fecha Registro"};
+        model = new DefaultTableModel(null, titulos);
+        
+        for (int i = 0; i < dataProduct.size(); i++) {
+            product = dataProduct.get(i);
+            Object nuevaFila[] = {product.getId(), product.getDescription(), product.getCategory(),
+                    product.getPrice(), product.getUnitsInStock(), product.getMinimum(),
+                    product.getResgistrationDate()};
+            model.addRow(nuevaFila);
+
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,16 +99,28 @@ public class DlgProducMasBarato extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DlgProducMasBarato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DlgProducMasBarato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DlgProducMasBarato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DlgProducMasBarato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DlgProducMasBarato.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(DlgProducMasBarato.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(DlgProducMasBarato.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(DlgProducMasBarato.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -94,7 +131,7 @@ public class DlgProducMasBarato extends javax.swing.JDialog {
                 DlgProducMasBarato dialog = new DlgProducMasBarato(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
+public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
                 });
